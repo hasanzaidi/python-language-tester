@@ -107,11 +107,9 @@ venv.bak/
 .mypy_cache/
 
 *.pickle
-Python-Data-Science-and-Machine-Learning-Bootcamp
 tf_logs/
-
-# Remaining files are quite big so we don't want to save them in Git.
-andrew-ng-deep-learning/Course5/
 
 # OS files
 .DS_Store
+
+*.txt
