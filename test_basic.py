@@ -1,3 +1,8 @@
+import os.path
+import datetime
+from datetime import timedelta
+
+
 def test_operators():
     # 3^2
     power = 3**2
@@ -18,7 +23,7 @@ def test_operators():
 
     # Can validate type
     is_str = isinstance("hello", str)
-    assert is_str == True
+    assert is_str is True
 
     # Ternary operator
     val = True
@@ -31,7 +36,7 @@ def test_operators():
         del my_dict['a']
     except KeyError as ex:
         hit_exception = True
-    assert hit_exception == True
+    assert hit_exception is True
 
 
 def test_strings():
@@ -45,12 +50,12 @@ def test_strings():
     assert char == "b"
 
     # Convert unicode number to character
-    char = chr(190)
-    assert char == "¾"
+    char = chr(128512)
+    assert char == "😀"
 
     # Reverse of chr
-    num = ord('¾')
-    assert num == 190
+    num = ord('😀')
+    assert num == 128512
 
 
 def test_io():
@@ -66,3 +71,30 @@ def test_io():
     with open('important_data_no_close.txt', 'r') as f:
         file_contents = f.read()
         assert file_contents == "The secret password is 12345"
+
+    file_exists = os.path.exists('important_data.txt')
+    assert file_exists is True
+
+    file_exists = os.path.exists('madeup_file.txt')
+    assert file_exists is False
+
+
+def test_dates():
+    # Parse date
+    parsed_date = datetime.datetime.strptime("Jun 21 at 16:40", '%b %d at %H:%M')
+    assert parsed_date == datetime.datetime(1900, 6, 21, 16, 40)
+
+    # Update part of the date
+    updated_date = parsed_date.replace(year=2020)
+    assert updated_date == datetime.datetime(2020, 6, 21, 16, 40)
+
+    # Check date is in the past or future
+    is_future = datetime.datetime(2030, 6, 21, 16, 40) > datetime.datetime.now()
+    assert is_future is True
+    is_past = datetime.datetime(2000, 6, 21, 16, 40) > datetime.datetime.now()
+    assert is_past is False
+
+    # Add some amount of days to date
+    ten_days_later = updated_date + timedelta(days=10)
+    assert ten_days_later == datetime.datetime(2020, 7, 1, 16, 40)
+

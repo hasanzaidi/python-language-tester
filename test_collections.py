@@ -15,7 +15,7 @@ def test_arrays():
     # Checking in list
     languages = ['Java', 'C++', 'Go', 'Python', 'JavaScript']
     exists = 'Python' in languages
-    assert exists == True
+    assert exists is True
 
     # Get the last element (negative indices means from the end. So -1 is last element, -2 is 2nd to last element, etc)
     last = my_list[-1]
@@ -29,9 +29,13 @@ def test_arrays():
     my_list.append(12)
     assert my_list == [2, 4, 6, 8, 10, 12]
 
+    # Remove an element from an array
+    my_list.remove(12)
+    assert my_list == [2, 4, 6, 8, 10]
+
     # Can reverse list
     reversed_list = my_list[::-1]
-    assert reversed_list == [12, 10, 8, 6, 4, 2]
+    assert reversed_list == [10, 8, 6, 4, 2]
 
     # Loops through numbers in range 0 up to (but not including) 5
     total = 0
@@ -101,7 +105,7 @@ def test_dictionaries():
 
     # Checking in dictionary
     exists = 'b' in my_dict
-    assert exists == True
+    assert exists is True
 
     # Two ways to create a new dictionary
     new_dict1 = {}
@@ -115,9 +119,9 @@ def test_tuples():
     my_tuple = (1, 4, 9)
     try:
         my_tuple[0] = 2
-        assert False == False
+        assert False is False
     except TypeError:
-        assert True == True
+        assert True is True
 
     # Can do something called tuple unpacking
     (start, end) = (1, 5)
@@ -135,3 +139,7 @@ def test_sets():
     my_set.add(4)
     my_set.add(16)
     assert my_set == {1, 4, 9, 16}
+
+    # Checking in set
+    exists = 9 in my_set
+    assert exists is True
