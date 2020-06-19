@@ -72,9 +72,9 @@ def test_io():
         file_contents = f.read()
         assert file_contents == "The secret password is 12345"
 
+    # Check if file exists
     file_exists = os.path.exists('important_data.txt')
     assert file_exists is True
-
     file_exists = os.path.exists('madeup_file.txt')
     assert file_exists is False
 
