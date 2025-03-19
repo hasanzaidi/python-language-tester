@@ -19,7 +19,23 @@ print()
 for _ in range(5):
     print("hello world")
 
-
 # To create a custom exception class
 class CustomError(Exception):
     pass
+
+# Creating a normal class
+class A(object):
+    def __init__(self):
+        self.x = 'Hello'
+        self.y = 1
+
+    def add(self, arg: int):
+        self.y = self.y + arg
+
+
+foo = A()
+print(foo.x)
+
+# Shows as error in IDE
+foo.add("a")
+print(foo.y)
